@@ -59,12 +59,12 @@ DiffVar <- function(x, y, scaleV.raw.FC = 0.1,
   raw.est.bio.res <- x$resBio$est.bio.res
   group1 <- attr(raw.est.bio.res, "group1")
 
-  highv <- x$pro.name[group1]
-  lowv <- setdiff(x$pro.name, highv)
-
   pro_name <- intersect(rownames(est.bio.res1), rownames(est.bio.res2))
   est.bio.res1 <- est.bio.res1[pro_name, ]
   est.bio.res2 <- est.bio.res2[pro_name, ]
+  
+  highv <- x$pro.name[group1]
+  lowv <- setdiff(pro_name, highv)
 
   # Derive p-values.
   v1 <- est.bio.res1$v
